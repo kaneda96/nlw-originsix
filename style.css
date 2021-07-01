@@ -23,6 +23,7 @@ a {
 
 nav {
   display: flex;
+  width: 100%;
   height: var(--header-height);
   align-items: center;
   justify-content: space-between;
@@ -80,7 +81,7 @@ main {
   background: linear-gradient(
     270deg,
     hsla(var(--hue), 36%, 57%, 1) 0%,
-    hsla(var(--hue), 65%, 88%, 0, 34) 100%
+    hsla(var(--hue), 65%, 88%, 0) 100%
   );
 }
 
