@@ -31,3 +31,34 @@ header.addEventListener('scroll', () => {
     header.classList.remove('scroll')
   }
 })
+
+// Adicionando swiper para os posts
+
+const swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  mousewheel: true,
+  keyboard: true
+})
+
+//ScrollReveal - mostrar elementos no scroll da página
+
+const scrollReveal = ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 700,
+  reset: true
+})
+
+scrollReveal.reveal(
+  `#home .image, #home .text,
+#about .image, #about .text,
+#services header, #services .card,
+#testimonials header, #testimonials .testimonials
+#contact .text, #contact .links,
+footer .brand, footer .social
+`,
+  { interval: 100 }
+)
