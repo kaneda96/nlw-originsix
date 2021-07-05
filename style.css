@@ -493,7 +493,9 @@ footer .social a:hover {
   transform: translateY(-8px);
 }
 
-@media /* back to top */ .back-to-top {
+/* back to top */
+
+.back-to-top {
   background: var(--base-color);
   color: var(--text-color-light);
 
