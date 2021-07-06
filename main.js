@@ -40,7 +40,13 @@ const swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination'
   },
   mousewheel: true,
-  keyboard: true
+  keyboard: true,
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapperSize: true
+    }
+  }
 })
 
 //ScrollReveal - mostrar elementos no scroll da página
@@ -55,7 +61,7 @@ const scrollReveal = ScrollReveal({
 scrollReveal.reveal(
   `#home .image, #home .text,
 #about .image, #about .text,
-#services header, #services .card,
+#services header, #services .cards,
 #testimonials header, #testimonials .testimonials
 #contact .text, #contact .links,
 footer .brand, footer .social
@@ -71,3 +77,29 @@ window.addEventListener('scroll', () => {
     backToTopButton.classList.remove('show')
   }
 })
+
+const sections = document.querySelectorAll('main section[id]')
+function ActiveMenuAtCurrentSection() {
+  const checkPoint = window.pageYOffset + (window.innerHeight / 8) * 4
+
+  for (const section of sections) {
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute('id')
+
+    const checkPointStart = checkPoint >= sectionTop
+    const checkpointEnd = checkPoint <= sectionTop + sectionHeight
+
+    if (checkPointStart && checkpointEnd) {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('active')
+    } else {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.remove('active')
+    }
+  }
+}
+
+window.addEventListener('scroll', ActiveMenuAtCurrentSection)
